@@ -36,43 +36,54 @@ TableSortedList<T>::TableSortedList(int (*comp_item) (T* item_1, T* item_2), int
 template < class T >
 TableSortedList<T>::~TableSortedList()
 {
-
+   delete sldl;
 }
 
 template < class T >
 bool TableSortedList<T>::tableIsEmpty()
 {
-
+   return sldl->isEmpty();
 }
 
 template < class T >
 int TableSortedList<T>::tableSize()
 {
-
+   return sldl->size();
 }
 
 template < class T >
 T* TableSortedList<T>::tableRetrieve(String* sk)
 {
-
+   return sldl->get(sk);
 }
 
 template < class T >
 void TableSortedList<T>::tableInsert(T* item)
 {
-
+   if (NULL == tableRetrieve(item->getKey()))
+   {
+      sldl->add(item);
+   }
 }
 
 template < class T >
 bool TableSortedList<T>::tableRemove(String* search_key)
 {
-
+   if (NULL != tableRetrieve(search_key))
+   {
+      sldl->remove(search_key);
+      return true;
+   }  
+   else
+   {
+      return false;
+   }
 }
 
 template < class T >
 ListDoublyLinkedIterator<T>* TableSortedList<T>::iterator()
 {
-
+   return sldl->iterator();
 }
 
 #endif
