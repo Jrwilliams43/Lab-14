@@ -30,17 +30,27 @@ int main()
    cout << num_items << endl;
 
    TableSortedList<CD>* slt = new TableSortedList<CD>(&CD::compare_items, &CD::compare_keys);
-
+   ListDoublyLinkedIterator<CD>* iter = slt->iterator();
    //DO THIS
    //thoroughly test your table
+	while(iter->hasNext())
+   {
+	 slt->tableInsert(iter->next());
+   }
+  iter = slt->iterator();
+  while(iter->hasNext())
+  {
+	CD* cd = iter->next();
+    slt->slt->tableRetrieve(cd->getKey);
+  
+  }
 
-
-
-
+   
 
 
 
    deleteCDs(cds);
+   delete iter;
    delete cds;
    delete slt;
    return 0;
