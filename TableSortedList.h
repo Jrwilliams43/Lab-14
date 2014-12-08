@@ -60,7 +60,7 @@ T* TableSortedList<T>::tableRetrieve(String* sk)
 template < class T >
 void TableSortedList<T>::tableInsert(T* item)
 {
-   if (NULL == tableRetrieve(item->getKey()))
+   if ( tableRetrieve(item->getKey())== NULL)
    {
       sldl->add(item);
    }
